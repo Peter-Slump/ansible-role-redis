@@ -1,0 +1,19 @@
+---
+
+- name: Configure monitoring
+  template:
+    src: etc/monit/conf-available/redis.j2
+    dest: /etc/monit/conf-available/redis
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Reload Monit
+
+- name: Enable Monit configuration
+  file:
+    src: "/etc/monit/conf-available/redis"
+    dest: /etc/monit/conf-enabled/redis
+    state: link
+  notify:
+    - Reload Monit

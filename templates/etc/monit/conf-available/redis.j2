@@ -1,0 +1,4 @@
+check process supervisor with pidfile /var/run/supervisord.pid
+  start program = "/etc/init.d/supervisor start"
+  stop  program = "/etc/init.d/supervisor stop"
+  if 5 restarts within 5 cycles then unmonitor

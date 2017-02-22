@@ -1,0 +1,9 @@
+---
+
+- name: Install required packages
+  apt:
+    name: redis-server
+    state: latest
+  notify: Start Redis
+
+- include: monit.yml
